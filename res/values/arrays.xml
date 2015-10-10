@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="http_array">
+        <item>http://</item>
+        <item>https://</item>
+    </string-array>
+    
+    <string-array name="url_array">
+        <item>http://demo.fwmob.com:8080/fastmobdemo/index.html</item>
+    </string-array>
+</resources>

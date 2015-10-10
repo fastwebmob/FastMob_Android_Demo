@@ -1,0 +1,70 @@
+# To enable ProGuard in your project, edit project.properties
+# to define the proguard.config property as described in that file.
+#
+# Add project specific ProGuard rules here.
+# By default, the flags in this file are appended to flags specified
+# in ${sdk.dir}/tools/proguard/proguard-android.txt
+# You can edit the include path and order by changing the ProGuard
+# include property in project.properties.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html
+
+# Add any project specific keep options here:
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+
+-keep public class cn.com.fastweb.maasdk.FWMobService {
+	public *;
+}
+
+-keep public class cn.com.fastweb.maasdk.MAAException {
+	public *;
+}
+
+-keep public class cn.com.fastweb.maasdk.utils.StatisticsUtil {
+	*;
+}
+
+-keep public class cn.com.fastweb.maasdk.utils.StatisticsUtil$MSG_TYPE {
+	*;
+}
+
+-keep public enum cn.com.fastweb.logger.FWLogLevel {
+	*; 
+}
+
+-keep public enum cn.com.fastweb.maasdk.client.Carrier {
+	public *;
+}
+
+-keep public enum cn.com.fastweb.maasdk.client.NetType {
+	public *;
+}
+
+-keep public enum cn.com.fastweb.maasdk.client.MAAHeaderCompressType {
+	public *;
+}
+
+-keep public enum cn.com.fastweb.maasdk.client.http.HttpMethod {
+	public *;
+}
+
+-keep public enum cn.com.fastweb.maasdk.client.CompressionLevel {
+	*;
+}
+
+-keep public enum cn.com.fastweb.maasdk.client.MAAHeaderCompressionType {
+	*;
+}
+
+-keep public enum cn.com.fastweb.maasdk.WebViewProxy {
+	*;
+}
+
+-keepattributes Exceptions,Signature,Deprecated,*Annotation*
