@@ -157,7 +157,7 @@ public class MainActivity extends Activity implements OnClickListener,OnItemClic
 			jumpToLoad(s);
 			break;
 		case R.id.fullAccBtn:
-			if (serviceBtn.isChecked()) {
+			if (fullAccBtn.isChecked()) {
 				StatisticsUtil.testAcc = 100;
 			} else {
 				StatisticsUtil.testAcc = 0;
