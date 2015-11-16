@@ -1,9 +1,9 @@
 package demo;
 
 import android.app.Application;
-import cn.com.fastweb.logger.FWLogLevel;
-import cn.com.fastweb.maasdk.FWMobService;
-import cn.com.fastweb.maasdk.client.CompressionLevel;
+import cn.com.fastweb.fwmob.FWMobService;
+import cn.com.fastweb.fwmob.client.CompressionLevel;
+import cn.com.fastweb.fwmob.logger.FWLogLevel;
 
 public class DemoApplication extends Application {
 

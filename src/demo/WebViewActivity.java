@@ -25,7 +25,7 @@ import android.widget.Button;
 import android.widget.SlidingDrawer;
 import android.widget.TextView;
 import cn.com.fastweb.fwmob.demo.R;
-import cn.com.fastweb.maasdk.utils.StatisticsUtil;
+import cn.com.fastweb.fwmob.utils.StatisticsUtil;
 
 public class WebViewActivity extends Activity implements OnClickListener {
 

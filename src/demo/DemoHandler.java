@@ -1,9 +1,9 @@
 package demo;
 
-import cn.com.fastweb.maasdk.utils.StatisticsUtil;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
+import cn.com.fastweb.fwmob.utils.StatisticsUtil;
 
 public class DemoHandler implements Callback {
 	

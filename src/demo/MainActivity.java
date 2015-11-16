@@ -25,11 +25,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+import cn.com.fastweb.fwmob.FWMobService;
 import cn.com.fastweb.fwmob.demo.R;
-import cn.com.fastweb.logger.FWLogLevel;
-import cn.com.fastweb.maasdk.FWMobService;
-import cn.com.fastweb.maasdk.client.CompressionLevel;
-import cn.com.fastweb.maasdk.utils.StatisticsUtil;
+import cn.com.fastweb.fwmob.utils.StatisticsUtil;
 
 public class MainActivity extends Activity implements OnClickListener,OnItemClickListener{
 	
@@ -130,12 +128,12 @@ public class MainActivity extends Activity implements OnClickListener,OnItemClic
 	protected void onResume() {
 		super.onResume();
 		fullAccBtn.setChecked(StatisticsUtil.testAcc == 100);
-		serviceBtn.setChecked(FWMobService.isRunning());
-		if (!FWMobService.isRunning()) {
+		serviceBtn.setChecked(FWMobService.isHttpServiceRunning());
+		if (!FWMobService.isHttpServiceRunning()) {
 			serviceBtn.postDelayed(new Runnable() {
 				public void run() {
-					serviceBtn.setChecked(FWMobService.isRunning());
-					if (!FWMobService.isRunning()) {
+					serviceBtn.setChecked(FWMobService.isHttpServiceRunning());
+					if (!FWMobService.isHttpServiceRunning()) {
 						serviceBtn.postDelayed(this, 500);
 					}
 				}
@@ -164,14 +162,14 @@ public class MainActivity extends Activity implements OnClickListener,OnItemClic
 			}
 			break;
 		case R.id.serviceBtn:
-			if (!FWMobService.isRunning()) {
+			if (!FWMobService.isHttpServiceRunning()) {
 				serviceBtn.setChecked(true);
 				FWMobService.startService(this, DemoApplication.ACC_DEV_KEY);
 				
-				if (!FWMobService.isRunning()) {
+				if (!FWMobService.isHttpServiceRunning()) {
 					serviceBtn.postDelayed(new Runnable() {
 						public void run() {
-							if (!FWMobService.isRunning()) {
+							if (!FWMobService.isHttpServiceRunning()) {
 								serviceBtn.postDelayed(this, 500);
 							}
 						}
