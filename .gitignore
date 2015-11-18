@@ -1,0 +1,6 @@
+
+*.class
+
+bin/AndroidManifest.xml
+
+bin/jarlist.cache
