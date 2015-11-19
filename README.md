@@ -28,3 +28,15 @@ UrlConnection会自动通过FastMobile Service开启的加速访问网络。 3
 
 ```json	import org.apache.commons.httpclient.HttpClient;
 		HttpClient httpClient = new HttpClient();	httpClient.getHostConfiguration.setProxy(FWMobService.getHost(), FWMobService.getPort());```
+3.6 FWMob服务状态回调
+如果有需要可以监控FWMob状态的回调。
+
+* didGetHttpServiceStatus：http服务状态改变
+* didGetTcpServiceStatus：TCP服务状态改变
+
+状态有如下几种：
+
+* FWMobServiceStatusInit：服务初始化
+* FWMobServiceStatusSuccessful：服务开启成功
+* FWMobServiceStatusStopped：服务已停止
+* FWMobServiceStatusFailed：服务开启失败

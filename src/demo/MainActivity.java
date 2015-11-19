@@ -26,6 +26,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 import cn.com.fastweb.fwmob.FWMobService;
+import cn.com.fastweb.fwmob.FWMobServiceStatus;
+import cn.com.fastweb.fwmob.FWMobServiceStatusCallback;
 import cn.com.fastweb.fwmob.demo.R;
 import cn.com.fastweb.fwmob.utils.StatisticsUtil;
 
@@ -130,14 +132,7 @@ public class MainActivity extends Activity implements OnClickListener,OnItemClic
 		fullAccBtn.setChecked(StatisticsUtil.testAcc == 100);
 		serviceBtn.setChecked(FWMobService.isHttpServiceRunning());
 		if (!FWMobService.isHttpServiceRunning()) {
-			serviceBtn.postDelayed(new Runnable() {
-				public void run() {
-					serviceBtn.setChecked(FWMobService.isHttpServiceRunning());
-					if (!FWMobService.isHttpServiceRunning()) {
-						serviceBtn.postDelayed(this, 500);
-					}
-				}
-			}, 500);
+			FWMobService.setServiceCallback(fwServicecallback);
 		}
 	}
 
@@ -166,15 +161,7 @@ public class MainActivity extends Activity implements OnClickListener,OnItemClic
 				serviceBtn.setChecked(true);
 				FWMobService.startService(this, DemoApplication.ACC_DEV_KEY);
 				
-				if (!FWMobService.isHttpServiceRunning()) {
-					serviceBtn.postDelayed(new Runnable() {
-						public void run() {
-							if (!FWMobService.isHttpServiceRunning()) {
-								serviceBtn.postDelayed(this, 500);
-							}
-						}
-					}, 500);
-				}
+				FWMobService.setServiceCallback(fwServicecallback);
 			} else {
 				serviceBtn.setChecked(false);
 				FWMobService.stopService();
@@ -218,4 +205,16 @@ public class MainActivity extends Activity implements OnClickListener,OnItemClic
 		jumpToLoad(s);
 	}  
 	
+	private FWMobServiceStatusCallback fwServicecallback = new FWMobServiceStatusCallback() {
+		public void didGetTcpServiceStatus(FWMobServiceStatus status) {
+		}
+		
+		@Override
+		public void didGetHttpServiceStatus(FWMobServiceStatus status) {
+			serviceBtn.setChecked(status == FWMobServiceStatus.FWMobServiceStatusSuccessful);
+			if (status != FWMobServiceStatus.FWMobServiceStatusInit && status != FWMobServiceStatus.FWMobServiceStatusStopped) {
+				Toast.makeText(MainActivity.this, "http service status: " + status, Toast.LENGTH_LONG).show();
+			}
+		}
+	};
 }
