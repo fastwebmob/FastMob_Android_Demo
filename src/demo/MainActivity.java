@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Process;
 import android.text.TextUtils;
@@ -46,7 +47,7 @@ public class MainActivity extends Activity implements OnClickListener,OnItemClic
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		serviceBtn = (ToggleButton) findViewById(R.id.serviceBtn);
 		fullAccBtn = (ToggleButton) findViewById(R.id.fullAccBtn);
 		

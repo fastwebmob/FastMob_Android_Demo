@@ -2,7 +2,6 @@ package demo;
 
 import android.app.Application;
 import cn.com.fastweb.fwmob.FWMobService;
-import cn.com.fastweb.fwmob.client.CompressionLevel;
 import cn.com.fastweb.fwmob.logger.FWLogLevel;
 
 public class DemoApplication extends Application {
@@ -22,7 +21,5 @@ public class DemoApplication extends Application {
 		// 设置日志级别 （可直接设置日志界别，DISABLE为关闭）
 		FWMobService.setLogLevel(FWLogLevel.VERBOSE);
 
-		// 如果需要，可以设置图片压缩级别
-		FWMobService.setCompressionLevel(CompressionLevel.H);
 	}
 }
